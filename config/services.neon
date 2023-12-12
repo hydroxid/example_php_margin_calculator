@@ -1,0 +1,11 @@
+services:
+	- App\Router\RouterFactory::createRouter
+
+	# model
+	- App\Model\Calculator
+
+search:
+	-	in: %appDir%
+		classes:
+			- *Factory
+			- *Facade

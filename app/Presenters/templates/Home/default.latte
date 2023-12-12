@@ -1,0 +1,51 @@
+{block content}
+
+<div class="row">
+    <div class="col-12 my-3">
+        <h1>Kalkulátor</h1>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 text-start my-3">
+        <h2 class="mb-5">Formulář</h2>
+        {control calculatorForm}
+    </div>
+</div>
+
+{ifset $results}
+    <div class="row mt-5">
+
+        <div class="col-12 text-start my-3">
+            <h2>Výsledky</h2>
+        </div>
+
+        <div class="col-md-3">
+            <h3>Cena bez marže</h3>
+            {foreach $results as $r}
+                <div>
+                    {$r['withoutMargin']['quantity']}ks, {$r['withoutMargin']['price']} Kč
+                </div>
+            {/foreach}
+        </div>
+
+        <div class="col-md-3">
+            <h3>Cena s marží</h3>
+            {foreach $results as $r}
+                <div>
+                    {$r['withMargin']['quantity']}ks ... {$r['withMargin']['priceWithMargin']} Kč + DPH
+                </div>
+            {/foreach}
+        </div>
+
+        <div class="col-md-2 text-secondary">
+            <h3>Marže</h3>
+            {foreach $results as $r}
+                <div>
+                    {$r['withMargin']['margin']}%
+                </div>
+            {/foreach}
+        </div>
+    </div>
+{/ifset}
